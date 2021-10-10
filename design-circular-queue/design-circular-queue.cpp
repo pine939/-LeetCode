@@ -26,6 +26,7 @@ public:
         return true;
     }
     
+    
     int Front() {
         if (isEmpty()) return -1;
         return q[f];
