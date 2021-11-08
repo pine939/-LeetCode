@@ -30,7 +30,7 @@ public:
         }
         
         if (prev != NULL) {
-            prev->next = after;
+            prev->next = after; // 
         } else {
             head = tmpNode->next;
         }
