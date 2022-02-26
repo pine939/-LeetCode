@@ -15,6 +15,7 @@ public:
             return head;
         }
         ListNode* temp = head;
+
         while(temp->next != NULL) {
             if(temp->val == temp->next->val) {
                 temp->next = temp->next->next;
@@ -26,3 +27,24 @@ public:
         return head;
     }
 };
+
+/*
+        ListNode *temp = head;
+        printf("%p\n", head);
+        printf("%p\n", head->next);
+        printf("%p\n", head->next->next);
+        temp = temp->next;
+        printf("%p\n", head);
+        printf("%p\n", head->next);
+        printf("%p\n", head->next->next);
+        
+        printf("%p\n", head);
+        printf("%p\n", head->next);
+        printf("%p\n", head->next->next);
+        temp->next = temp->next->next;
+        printf("%p\n", head);
+        printf("%p\n", head->next);
+        printf("%p\n", head->next->next);  //null
+        
+
+*/
