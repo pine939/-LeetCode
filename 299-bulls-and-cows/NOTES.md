@@ -1,0 +1,1 @@
+https://leetcode.com/problems/bulls-and-cows/discuss/74618/C%2B%2B-4ms-Straight-forward-solution-two-pass-O(N)-time
