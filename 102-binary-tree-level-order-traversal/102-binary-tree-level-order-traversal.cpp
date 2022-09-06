@@ -12,24 +12,33 @@
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
-        if(!root) return {};
-        queue<TreeNode*> q;
-        q.push(root);
         vector<vector<int>> res;
+        if (root == nullptr) {
+            return res;
+        }
         
-        while(!q.empty()){
+        queue<TreeNode*> q;  // BFS는 queue?
+        q.push(root);
+        
+        while(!q.empty()) {
             int sz = q.size();
             vector<int> tmp;
-            for(int i=0; i<sz; i++){
+            
+            for (int i = 0; i < sz; i++) {
                 TreeNode* t = q.front();
                 q.pop();
                 tmp.push_back(t->val);
-                if(t->left) q.push(t->left);
-                if(t->right) q.push(t->right);
+                if (t->left) {
+                    q.push(t->left);
+                }
+                if (t->right) {
+                    q.push(t->right);
+                }
             }
             res.push_back(tmp);
             tmp.clear();
         }
+        
         return res;
     }
 };
