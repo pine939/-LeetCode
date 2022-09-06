@@ -11,9 +11,7 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        
         TreeNode* cur = root;
-        std::cout << cur->val << std::endl;
         
         while (true) {
             if (p->val < cur->val && q->val < cur->val) {
