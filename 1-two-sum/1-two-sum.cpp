@@ -3,9 +3,12 @@ public:
     vector<int> twoSum(vector<int>& nums, int target) {
         vector<int> ans;
         if (nums.size() == 2) {
+            return {0, 1};
+            /*
             ans.push_back(0);
             ans.push_back(1);
             return ans;
+            */
         }
         
         // find "target - nums[i]" in vector nums (not i index).
@@ -13,15 +16,16 @@ public:
         
         for (int i = 0; i < nums.size(); i++) {
             if (hash.find(target-nums[i]) != hash.end()) {  // found.
-                ans.push_back(i);
-                ans.push_back(hash[target-nums[i]]);
-                return ans;
+                //ans.push_back(i);
+                //ans.push_back(hash[target-nums[i]]);
+                //return ans;
+                return {i, hash[target-nums[i]]};
             }
             // not found
             hash[nums[i]] = i;
         }
         
-        return ans;
+        return {};
     }
 };
 
