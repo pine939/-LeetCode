@@ -1,6 +1,35 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> ans;
+        if (nums.size() == 2) {
+            ans.push_back(0);
+            ans.push_back(1);
+            return ans;
+        }
+        
+        // find "target - nums[i]" in vector nums (not i index).
+        unordered_map<int, int> hash;
+        
+        for (int i = 0; i < nums.size(); i++) {
+            if (hash.find(target-nums[i]) != hash.end()) {  // found.
+                ans.push_back(i);
+                ans.push_back(hash[target-nums[i]]);
+                return ans;
+            }
+            // not found
+            hash[nums[i]] = i;
+        }
+        
+        return ans;
+    }
+};
+
+/*
+// O(n^2)
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
         vector<int> answer;
         if (nums.size() == 2) {
             answer.push_back(0);
@@ -23,6 +52,6 @@ public:
     }
 };
 
-/*
-Brute Force 
+
+
 */
