@@ -12,14 +12,38 @@
 
 class Solution {
 public:
+  void inOrder(TreeNode* root) {
+      if (root == nullptr) return;
+      inOrder(root->left);
+      tree.push_back(root->val);
+      inOrder(root->right);
+  }
+    
+  bool isValidBST(TreeNode* root, long min = LONG_MIN, long max = LONG_MAX) {
+      inOrder(root);
+      
+      for (int i = 1; i < tree.size(); i++) {
+          if (tree[i] <= tree[i-1]) {
+              return false;
+          }
+      }
+      return true;
+  }
+    
+private:
+    vector<int> tree;
+};
+
+
+/*
+// Recursive
+class Solution {
+public:
   bool isValidBST(TreeNode* root, long min = LONG_MIN, long max = LONG_MAX) {
       if (root == nullptr) {
           return true;
       }
-      std::cout << "root->val: " << root->val << std::endl;
-      std::cout << "min: " << min << std::endl;
-      std::cout << "max: " << max << std::endl;
-      std::cout << "------" << std::endl;
+
       if (root->val <= min || root->val >= max) {
           return false;
       }
@@ -27,31 +51,4 @@ public:
       return isValidBST(root->left, min, root->val) && isValidBST(root->right, root->val, max);
   }
 };
-
-
-/*
-1. TreeNode를 vector에 넣는다. 
-2. vector를 순회하면서 판단한다.
-
-///
-
-min, max로 뭔가 넘겨서 비교한다...?
-
-root->val vs min
-root->val vs max 
-
-return false되는 상황
-root->val > max
-root->val < min
-
-if (root == nullptr) {
-  return true;
-}
-
-if (root->val <= min || root->val >= max) {
-  return false;
-}
-
-return isValidBST(root->left, min, root->val) && isValidBST(root->right, root->val, max);
-
 */
