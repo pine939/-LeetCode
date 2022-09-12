@@ -13,32 +13,30 @@ class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
         vector<vector<int>> res;
-        if (root == nullptr) {
-            return res;
-        }
+        if (root == nullptr) return {};
+        if (root->left == nullptr && root->right == nullptr) return {{root->val}};
         
-        queue<TreeNode*> q;  // BFS는 queue?
+        // bfs 
+        queue<TreeNode*> q;
         q.push(root);
         
+        vector<int> tmp;
         while(!q.empty()) {
-            int sz = q.size();
-            vector<int> tmp;
-            
-            for (int i = 0; i < sz; i++) {
-                TreeNode* t = q.front();
+            int qs = q.size();
+            for (int i = 0; i < qs; i++) {
+                TreeNode *cur = q.front();
                 q.pop();
-                tmp.push_back(t->val);
-                if (t->left) {
-                    q.push(t->left);
+                tmp.push_back(cur->val);
+                if (cur->left) {
+                    q.push(cur->left);
                 }
-                if (t->right) {
-                    q.push(t->right);
+                if (cur->right) {
+                    q.push(cur->right);
                 }
             }
             res.push_back(tmp);
             tmp.clear();
         }
-        
         return res;
     }
 };
