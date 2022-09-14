@@ -1,1 +1,4 @@
-https://leetcode.com/problems/number-of-islands/discuss/56589/C%2B%2B-BFSDFS
+BFS로 풀어보자. 
+* queue 사용.
+* push 조건 : 4면을 체크했을 때(인접한 좌표가) 1이고, 아직 방문하지 않았을 때.
+* pop될 때 방문되지 않았다면 방문 체크를 한다.
