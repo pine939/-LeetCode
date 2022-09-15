@@ -1,3 +1,4 @@
-https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/discuss/64980/C%2B%2B-Recursive-and-Iterative
-​
-BST 특징 이용
+* root->val이 가운데이면 root를 반환한다.
+* p->val, q->val이 root->val보다 작으면 root = root->left
+* p->val, q->val이 root->val보다 크면 root = root->right
+
